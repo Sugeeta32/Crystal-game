@@ -1,80 +1,86 @@
-var randomNum;
-var loss;
-var win;
+var randomNum =0,loss = 0, win = 0;
+var ruby, topaz,diamond, sapphaire ;
+var total = 0;
 
+resetAndStart();
 
-
-
-// randomly generated number
-
-randomNum = Math.floor(Math.random() * ((120 - 19) + 1) + 19);
-
-$("#random-number").text('Random number: ' + randomNum);
-//console.log(randomNum);
-
-var ruby = getRandomNumber();
-var topaz = getRandomNumber();
-var diamond = getRandomNumber();
-var sapphaire = getRandomNumber();
-var total=0;
-function getRandomNumber() {
-    var random= Math.floor(Math.random() * 12 + 1);
+function getRandomNumberForCrystal() {
+    var random = Math.floor(Math.random() * 12 + 1);
     console.log(random);
     return random;
 }
 
-function win() {
-    // alert(total);
+function getRandomNumberToPlay() {
+  return Math.floor(Math.random() * ((120 - 19) + 1) + 19);
+}
+
+function setRandomNumberOnCrystal() {
+  ruby = getRandomNumberForCrystal();
+  topaz = getRandomNumberForCrystal();
+  diamond = getRandomNumberForCrystal();
+  sapphaire = getRandomNumberForCrystal();
+}
+// randomly generate number of four crystals
+
+function checkWin() {
+    //  alert(total);
     if (total === randomNum) {
-        // win++;
-        alert("you won");
+        win++;
+        $("#wins").text("Wins : " + win);
+        resetAndStart();
+        alert("You won, WOHOO!");
     }
 }
 
-function lost() {
+function checkLost() {
     if (total > randomNum) {
-        // loss++;
-        alert("lost");
+        loss++;
+        $("#losses").text("Losses : " + loss);
+        resetAndStart();
+        alert("You lost, try again!");
     }
 
 }
-
-
-//  $(".btn-info").text(getRandomNumber());
-/* $(".btn-light").text(getRandomNumber());
- $(".btn-dark").text(getRandomNumber());
- $(".btn-purple").text(getRandomNumber());*/
-
-$(".btn-info").on('click', function () {
+function resetAndStart() {
+    $("#random-number").empty();
+    total = 0;
+    $("#display").text("Total points : " + " " + total);
+    randomNum = getRandomNumberToPlay();
+     $("#random-number").text('Random number : ' +"  "+ randomNum);
+     setRandomNumberOnCrystal() ;
+  }
+ 
+$(".ruby").on('click', function () {
     total += ruby;
-$("#display").text("Total points : "+ " "+total);
-    win();
-    lost();
-
+    $("#display").text("Total points : " + " " + total);
+    checkWin();
+    checkLost();
+   
 });
 
-$(".btn-light").on('click', function () {
+$(".topaz").on('click', function () {
     total += topaz;
-    $("#display").text("Total points : "+ " "+total);
-    win();
-    lost();
+    $("#display").text("Total points : " + " " + total);
+    checkWin();
+    checkLost();
+    
 
 });
 
-$(".btn-dark").on('click', function () {
+$(".diamond").on('click', function () {
     total += diamond;
-    $("#display").text("Total points : "+ " "+total);
-    win();
-    lost();
-
+    $("#display").text("Total points : " + " " + total);
+    checkWin();
+    checkLost();
+    
 });
 
-$(".btn-purple").on('click', function () {
+$(".sapphire").on('click', function () {
     total += sapphaire;
-    $("#display").text("Total points : "+ " "+total);
-    win();
-    lost();
-
+    $("#display").text("Total points : " + " " + total);
+    checkWin();
+    checkLost();
+    
 });
 
 //  4 crystal need to have different random number between 1 to 12
