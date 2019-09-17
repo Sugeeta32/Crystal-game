@@ -1,5 +1,5 @@
 var randomNumToStartGame = 0, loss = 0, win = 0;
-var ruby, topaz, diamond, sapphaire;
+var rand_ruby, rand_topaz, rand_diamond, rand_sapphire;
 var total = 0;
 
 startGame();
@@ -25,10 +25,10 @@ function getRandomNumberToPlay() {
 
 // function to set randomly generated number in function "getRandomNumberForCrystal" to 4 crystals
 function setRandomNumberOnCrystal() {
-    ruby = getRandomNumberForCrystal();
-    topaz = getRandomNumberForCrystal();
-    diamond = getRandomNumberForCrystal();
-    sapphaire = getRandomNumberForCrystal();
+    rand_ruby = getRandomNumberForCrystal();
+    rand_topaz = getRandomNumberForCrystal();
+    rand_diamond = getRandomNumberForCrystal();
+    rand_sapphire = getRandomNumberForCrystal();
 }
 // Function to generate numbers between 1 to 12 for 4 crystals that are images
 
@@ -63,7 +63,7 @@ function checkLost() {
 }
 
 $(".ruby").on('click', function () {
-    total += ruby;
+    total += rand_ruby;
     $("#display").text("Total points : " + " " + total);
     checkWin();
     checkLost();
@@ -71,7 +71,7 @@ $(".ruby").on('click', function () {
 });
 
 $(".topaz").on('click', function () {
-    total += topaz;
+    total += rand_topaz;
     $("#display").text("Total points : " + " " + total);
     checkWin();
     checkLost();
@@ -80,7 +80,7 @@ $(".topaz").on('click', function () {
 });
 
 $(".diamond").on('click', function () {
-    total += diamond;
+    total += rand_diamond;
     $("#display").text("Total points : " + " " + total);
     checkWin();
     checkLost();
@@ -88,7 +88,7 @@ $(".diamond").on('click', function () {
 });
 
 $(".sapphire").on('click', function () {
-    total += sapphaire;
+    total += rand_sapphire;
     $("#display").text("Total points : " + " " + total);
     checkWin();
     checkLost();
